@@ -49,13 +49,13 @@ public class Board {
 		return row >= 0 && row < rows && column >= 0 && column < colums;
 	}
 	
-	private boolean positionExists(Position position) {
+	public boolean positionExists(Position position) {
 		return positionExists(position.getRow(), position.getColumn());
 	}
 	
 	public boolean thereIsAPiece(Position position) {
-		if (thereIsAPiece(position)) {
-			throw new BoardException("There is already a piece on position");
+		if (!positionExists(position)) {
+			throw new BoardException("Position not on the board");
 		}
 		return piece(position) != null;
 	}
